@@ -21,8 +21,11 @@ public class PersonService {
 	}
 
 	// getting a specific record
-	public Person getPersonById(int id) {
-		return personRepository.findById(id).get();
+	public Person getPersonById(int id){
+		try {
+		return personRepository.findById(id).get();}catch (Exception e) {
+			return null;
+		}
 	}
 
 	public void saveOrUpdate(Person person) {
@@ -32,5 +35,9 @@ public class PersonService {
 	// deleting a specific record
 	public void delete(int id) {
 		personRepository.deleteById(id);
+	}
+
+	public long personCount() {
+		return personRepository.count();
 	}
 }

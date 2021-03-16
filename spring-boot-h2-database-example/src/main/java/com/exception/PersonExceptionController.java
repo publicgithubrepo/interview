@@ -13,4 +13,9 @@ public class PersonExceptionController extends ResponseEntityExceptionHandler  {
    public ResponseEntity<Object> exception(PersonNotFoundException exception) {
       return new ResponseEntity<>("Person not found", HttpStatus.NOT_FOUND);
    }
+   
+   @ExceptionHandler(value = Exception.class)
+   public ResponseEntity<Object> exception(Exception exception) {
+      return new ResponseEntity<>("Not found", HttpStatus.NOT_FOUND);
+   }
 }
